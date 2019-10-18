@@ -10,6 +10,7 @@ namespace BarnardTech.DataFirst
     public class SqlTableName : Attribute
     {
         public string Name;
+        public string ReadTableOverride;
 
         public SqlTableName(string tableName)
         {
