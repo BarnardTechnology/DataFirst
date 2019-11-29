@@ -88,7 +88,7 @@ namespace BarnardTech.DataFirst
                         "WHERE " + fieldName.Name + " = @fieldid", "",
                         new List<SqlParameter>()
                         {
-                                                    new SqlParameter("@fieldid", tR.LocalProperty.GetValue(this))
+                            new SqlParameter("@fieldid", tR.LocalProperty.GetValue(this))
                         });
 
                     var converted = DataFunctions.ConvertList(retList, r.PropertyType);
