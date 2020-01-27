@@ -917,7 +917,16 @@ namespace BarnardTech.DataFirst
                     cmd.CommandText += fieldStr + " VALUES " + valueStr + "; SELECT * FROM #tempTable;";
 
                     dataConn.Open();
-                    object retVal = cmd.ExecuteScalar();
+                    object retVal;
+                    try
+                    {
+                        retVal = cmd.ExecuteScalar();
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception outEx = new Exception("Error executing statement: " + cmd.CommandText, ex);
+                        throw outEx;
+                    }
                     dataConn.Close();
 
                     if (autoNumberProperty != null)
