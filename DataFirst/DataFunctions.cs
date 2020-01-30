@@ -882,7 +882,7 @@ namespace BarnardTech.DataFirst
                 string fieldStr = "";
                 string valueStr = "";
                 SqlConnection dataConn = new SqlConnection(GetConnectionString());
-                SqlCommand cmd = new SqlCommand("CREATE TABLE #tempTable AS (SELECT " + autoNumberField + "FROM " + tableName + " WHERE 1 = 2); INSERT INTO " + tableName + " ", dataConn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO " + tableName + " ", dataConn);
                 bool hasValues = false;
 
                 for (var i = 0; i < fieldNames.Count; i++)
@@ -912,9 +912,9 @@ namespace BarnardTech.DataFirst
 
                 if (hasValues)
                 {
-                    fieldStr = "(" + fieldStr.Substring(0, fieldStr.Length - 2) + ") output INSERTED." + autoNumberField + " INTO #tempTable (" + autoNumberField + ")";
+                    fieldStr = "(" + fieldStr.Substring(0, fieldStr.Length - 2) + ")";
                     valueStr = "(" + valueStr.Substring(0, valueStr.Length - 2) + ")";
-                    cmd.CommandText += fieldStr + " VALUES " + valueStr + "; SELECT * FROM #tempTable;";
+                    cmd.CommandText += fieldStr + " VALUES " + valueStr + "; SELECT @@IDENTITY;";
 
                     dataConn.Open();
                     object retVal;
