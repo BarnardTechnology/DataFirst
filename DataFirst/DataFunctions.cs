@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace BarnardTech.DataFirst
 {
-    class DataFunctions
+    public class DataFunctions
     {
         internal static string GetConnectionString()
         {
