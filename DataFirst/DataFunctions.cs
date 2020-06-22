@@ -914,7 +914,7 @@ namespace BarnardTech.DataFirst
                 {
                     fieldStr = "(" + fieldStr.Substring(0, fieldStr.Length - 2) + ")";
                     valueStr = "(" + valueStr.Substring(0, valueStr.Length - 2) + ")";
-                    cmd.CommandText += fieldStr + " VALUES " + valueStr + "; SELECT @@IDENTITY;";
+                    cmd.CommandText += fieldStr + " VALUES " + valueStr + "; SELECT IDENT_CURRENT('" + tableName + "');";
 
                     dataConn.Open();
                     object retVal;
