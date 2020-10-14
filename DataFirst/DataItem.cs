@@ -153,5 +153,13 @@ namespace BarnardTech.DataFirst
         {
             _newRecord = false;
         }
+
+        public bool IsNewRecord
+        {
+            get
+            {
+                return _newRecord;
+            }
+        }
     }
 }
