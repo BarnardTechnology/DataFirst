@@ -124,6 +124,7 @@ namespace BarnardTech.DataFirst
 
         public void Delete()
         {
+            // TODO: We shouldn't be deleting data!
             if (!_newRecord)
             {
                 DataFunctions.DeleteData(this);
